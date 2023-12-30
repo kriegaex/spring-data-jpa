@@ -21,12 +21,18 @@
 
 	<properties>
 		<java-module-name>spring.data.jpa</java-module-name>
-		<!--
-			2.13.0 works, 2.14.x yields error "No such compiler 'eclipse'".
-			TODO: Upgrade after https://github.com/codehaus-plexus/plexus-compiler/issues/347 fix.
-		-->
-		<plexus-compiler.version>2.13.0</plexus-compiler.version>
+		<!-- Needs Maven 3.9.6 and ideally Maven Compiler 3.12.1 due to switch to Eclipse Sisu -->
+		<plexus-compiler.version>2.14.2</plexus-compiler.version>
+		<ecj.version>3.37.0-SNAPSHOT</ecj.version>
+		<maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>eclipse-weekly-builds</id>
+			<url>https://repo.eclipse.org/content/repositories/eclipse-snapshots</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 
@@ -344,6 +350,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<compilerId>eclipse</compilerId>
 					<proc>only</proc>
@@ -366,6 +373,11 @@
 						<groupId>org.codehaus.plexus</groupId>
 						<artifactId>plexus-compiler-eclipse</artifactId>
 						<version>${plexus-compiler.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.jdt</groupId>
+						<artifactId>ecj</artifactId>
+						<version>${ecj.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
