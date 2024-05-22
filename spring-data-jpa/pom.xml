@@ -23,7 +23,7 @@
 		<java-module-name>spring.data.jpa</java-module-name>
 		<!-- Needs Maven 3.9.6 and ideally Maven Compiler 3.12.1 due to switch to Eclipse Sisu -->
 		<plexus-compiler.version>2.14.2</plexus-compiler.version>
-		<ecj.version>3.37.0-SNAPSHOT</ecj.version>
+		<ecj.version>3.37.0</ecj.version>
 		<maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
 	</properties>
 
